@@ -1,0 +1,59 @@
+METHOD -1 :-Using HashMap 
+
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        int ans = Integer.MIN_VALUE;
+        HashMap<Character ,Integer> map = new HashMap<>();
+        int windowstart =0;
+        int windowend=0;
+        int n = s.length();
+        while(windowend<n)
+        {
+            if( map.containsKey(s.charAt(windowend)) && windowstart < map.get(s.charAt(windowend))+1)
+            {
+                windowstart = map.get(s.charAt(windowend))+1;
+            }
+            map.put(s.charAt(windowend) , windowend);
+            ans = Math.max(ans , windowend - windowstart+1);
+            windowend++;
+        }
+        if(ans == Integer.MIN_VALUE)
+        {
+            return 0;
+        }
+        return ans;
+    }
+}
+
+
+METHOD 2 :- Using set and remove linear shrink
+
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        int ans = Integer.MIN_VALUE;
+        Set<Character> set = new HashSet<>();
+        int windowstart =0;
+        int windowend=0;
+        int n = s.length();
+        while(windowend<n)
+        {
+            if(set.contains(s.charAt(windowend)))
+            {
+                //removing element from set
+                while(set.contains(s.charAt(windowend)))
+                {
+                    set.remove(s.charAt(windowstart));
+                    windowstart++;
+                } 
+            }
+            set.add(s.charAt(windowend));
+            ans = Math.max(ans , windowend - windowstart+1);
+            windowend++;
+        }
+        if(ans == Integer.MIN_VALUE)
+        {
+            return 0;
+        }
+        return ans;
+    }
+}
