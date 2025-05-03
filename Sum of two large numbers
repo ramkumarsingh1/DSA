@@ -1,0 +1,77 @@
+class Solution {
+    String findSum(String s1, String s2) {
+        // code here
+        StringBuilder str1 = new StringBuilder();
+        StringBuilder str2 = new StringBuilder();
+        str1.append(s1);
+        str2.append(s2);
+        str1.reverse();
+        str2.reverse();
+        
+        String st1 = str1.toString();
+        String st2 = str2.toString();
+        
+        String ans ="";
+        
+        int rem =0;
+        int i = 0;
+        int j = 0;
+        while(i<st1.length() && j<st2.length())
+        {
+            int sum = Character.getNumericValue(st1.charAt(i)) + Character.getNumericValue(st2.charAt(j)) + rem;
+            if(sum >=10)
+            {
+                ans += Integer.toString(sum%10);
+                rem =1;
+            }
+            else
+            {
+                ans += Integer.toString(sum %10);
+                rem =0;
+            }
+            i++;
+            j++;
+        }
+        while(i<st1.length())
+        {
+            int sum = Character.getNumericValue(st1.charAt(i)) + rem;
+            if(sum >=10)
+            {
+                ans += Integer.toString(sum%10);
+                rem =1;
+            }
+            else
+            {
+                ans += Integer.toString(sum %10);
+                rem =0;
+            }
+            i++;
+        }
+        while(j<st2.length())
+        {
+            int sum = Character.getNumericValue(st2.charAt(j)) + rem;
+            if(sum >=10)
+            {
+                ans += Integer.toString(sum%10);
+                rem =1;
+            }
+            else
+            {
+                ans += Integer.toString(sum %10);
+                rem =0;
+            }
+            j++;
+        }
+        if(rem !=0)
+        {
+            ans += Integer.toString(rem);
+        }
+        StringBuilder ans1 = new StringBuilder();
+        ans1.append(ans);
+        ans1.reverse();
+        String fans = ans1.toString();
+        return fans;
+        
+        
+    }
+}
