@@ -70,8 +70,15 @@ class Solution {
         ans1.append(ans);
         ans1.reverse();
         String fans = ans1.toString();
-        return fans;
         
-        
+        int f = 0;
+        // Find the index of the first non-zero character
+        while (f < fans.length() && fans.charAt(f) == '0')
+        {
+            f++;
+        }
+        // Directly store the result
+        String r = fans.substring(f, fans.length()); // Highlighted change
+        return r; 
     }
 }
