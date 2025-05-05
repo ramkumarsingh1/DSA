@@ -9,7 +9,7 @@ class Solution {
         while(end<n)
         {
             ans *= arr[end];
-            while(ans >= k && start <end)
+            while(ans >= k && start <=end)
             {
                 ans = ans / arr[start];
                 start++;
