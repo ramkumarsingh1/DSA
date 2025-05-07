@@ -1,0 +1,21 @@
+class Solution {
+    public long multiplyTwoLists(Node first, Node second) {
+        // Code here
+        long num = 0;
+        long num2 =0;
+        Node ptr1 = first;
+        Node ptr2 = second;
+        while(ptr1 !=null)
+        {
+            num = num *10 + ptr1.data;
+            ptr1 = ptr1.next;
+        }
+        while(ptr2 != null)
+        {
+            num2 = num2 *10 + ptr2.data;
+            ptr2 = ptr2.next;
+        }
+        long ans = (num * num2) %1000000007;
+        return ans; 
+    }
+}
