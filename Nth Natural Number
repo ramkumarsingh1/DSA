@@ -1,0 +1,16 @@
+class Solution {
+    long findNth(long n) {
+        // code here
+         // 9 base approach
+        long ans =0;
+        long p=1;
+        while(n>0)
+        {
+            long rem = n%9;
+            n= n/9;
+            ans = ans + p * rem;
+            p=p*10;
+        }
+        return ans;
+    }
+}
